@@ -47,14 +47,14 @@ export const DataService = {
     const cleanId = rawId.replace(/\./g, "").trim();
     if (!cleanId) return null;
 
-    let baseUrl = process.env.EXPO_PUBLIC_API_URL || "https://www.taskrabbit.co.uk/api/v3/assembly_services/product.json";
+    let baseUrl = process.env.EXPO_PUBLIC_API_URL;
     if (!baseUrl.includes('product.json')) {
         baseUrl = `${baseUrl.replace(/\/$/, '')}/assembly_services/product.json`;
     }
     const locale = process.env.EXPO_PUBLIC_LOCALE || "en-GB";
     const url = `${baseUrl}?item_no=${cleanId}&locale=${locale}`;
 
-    // 1. ОФЛАЙН FIRST: Перевіряємо кеш
+    // 1. ОФЛАЙН FIRST
     const cached = await getFromCache(cleanId);
     
     if (settings.isOfflineMode && cached) {
@@ -62,7 +62,6 @@ export const DataService = {
         return { ...cached, quantity: 1 };
     }
 
-    // 2. Якщо немає в кеші або Offline Mode вимкнено — робимо запит
     try {
       const delay = parseInt(process.env.EXPO_PUBLIC_API_DELAY || '1000');
       await sleep(delay);
