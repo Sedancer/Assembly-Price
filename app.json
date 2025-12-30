@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "AssemblyPrice",
+    "name": "Assembly Price",
     "slug": "AssemblyPrice",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,10 +21,16 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.serhiibara.AssemblyPrice"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a550e778-f817-4583-a2e2-e401a38dbb61"
+      }
     }
   }
 }
